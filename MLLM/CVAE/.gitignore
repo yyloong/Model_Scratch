@@ -1,2 +1,3 @@
 ./data
 ./cvae_mnist.pth
+__pycache__/
