@@ -1,3 +1,4 @@
 *.nsys-rep
 /wandb
 __pycache__/
+train.log

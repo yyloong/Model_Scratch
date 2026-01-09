@@ -1924,3 +1924,7 @@ Saved checkpoint: /home/u-longyy/data/mini_model/checkpoints/epoch_0_step_20000_
 [32mINFO[0m: train loss:3.8759, step:20470
 [32mINFO[0m: train loss:3.9410, step:20480
 [32mINFO[0m: train loss:3.8969, step:20490
+[32mINFO[0m: step:20500, val_loss: 3.9116
+[32mINFO[0m: train loss:4.0003, step:20500
+[32mINFO[0m: train loss:3.9035, step:20510
+[32mINFO[0m: train loss:3.8151, step:20520
