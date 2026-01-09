@@ -54,6 +54,7 @@ class MultiHeadLatentAttention(torch.nn.Module):
         self,
         x,
         past_key_values=None,
+        position_ids=None,
         attn_mask=None,
         use_cache=False,
         use_standard=True,
@@ -66,6 +67,8 @@ class MultiHeadLatentAttention(torch.nn.Module):
 
         kv = self.kv_down_proj(x)
         k_rope = self.k_rope_proj(x)
+        k_rope = k_rope.unsqueeze(1).expand(-1, self.num_heads, -1, -1)
+        k_rope = self.RoPE(k_rope, position_ids)
         k_content, v = kv.chunk(2, dim=-1)
 
         if past_key_values is not None:
@@ -80,12 +83,10 @@ class MultiHeadLatentAttention(torch.nn.Module):
             .view(B, -1, self.num_heads, self.content_dim)
             .transpose(1, 2)
         )
-        k_rope = self.RoPE(k_rope, start_pos=0)
-        k_rope = k_rope.unsqueeze(1).expand(-1, self.num_heads, -1, -1)
         k = torch.cat([k_content, k_rope], dim=-1)
         v = self.v_up_proj(v).view(B, -1, self.num_heads, self.head_dim).transpose(1, 2)
         q[..., self.content_dim :] = self.RoPE(
-            q[..., self.content_dim :], start_pos=k.size(-2) - T
+            q[..., self.content_dim :], position_ids
         )
 
         is_causal = attn_mask is None and (past_key_values is None) and (T > 1)

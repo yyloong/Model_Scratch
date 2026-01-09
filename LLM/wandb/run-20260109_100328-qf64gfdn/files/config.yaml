@@ -1,0 +1,96 @@
+_wandb:
+    value:
+        cli_version: 0.23.1
+        e:
+            8exlbjcso5ty4hudnhxujabpun9relye:
+                codePath: LLM/dist_train.py
+                codePathLocal: dist_train.py
+                cpu_count: 32
+                cpu_count_logical: 64
+                cudaVersion: "12.9"
+                disk:
+                    /:
+                        total: "470228779008"
+                        used: "410515435520"
+                email: long.yan.yu.nju@gmail.com
+                executable: /home/u-longyy/miniconda3/envs/verl/bin/python3.10
+                git:
+                    commit: ee489d8e63cf59fdd496e19c3e84a4c6670fe860
+                    remote: git@github.com:yyloong/Model_Scratch.git
+                gpu: NVIDIA A100-PCIE-40GB
+                gpu_count: 8
+                gpu_nvidia:
+                    - architecture: Ampere
+                      cudaCores: 6912
+                      memoryTotal: "42949672960"
+                      name: NVIDIA A100-PCIE-40GB
+                      uuid: GPU-6ed1cf2b-e57b-c31b-953d-7d68de5732e4
+                    - architecture: Ampere
+                      cudaCores: 6912
+                      memoryTotal: "42949672960"
+                      name: NVIDIA A100-PCIE-40GB
+                      uuid: GPU-c04589ce-3c48-15c2-0ee5-e3b63d2af6ec
+                    - architecture: Ampere
+                      cudaCores: 6912
+                      memoryTotal: "42949672960"
+                      name: NVIDIA A100-PCIE-40GB
+                      uuid: GPU-b4ea2b04-d007-268a-c3fb-4edc97282cfc
+                    - architecture: Ampere
+                      cudaCores: 6912
+                      memoryTotal: "42949672960"
+                      name: NVIDIA A100-PCIE-40GB
+                      uuid: GPU-25d3eac7-047d-e32d-4c24-111d1b116574
+                    - architecture: Ampere
+                      cudaCores: 6912
+                      memoryTotal: "42949672960"
+                      name: NVIDIA A100-PCIE-40GB
+                      uuid: GPU-f6cb4dcc-fc85-f32e-b677-f7fad0d4e3be
+                    - architecture: Ampere
+                      cudaCores: 6912
+                      memoryTotal: "42949672960"
+                      name: NVIDIA A100-PCIE-40GB
+                      uuid: GPU-2ce943c8-9857-85a9-2cc9-d13e4c44ccb2
+                    - architecture: Ampere
+                      cudaCores: 6912
+                      memoryTotal: "42949672960"
+                      name: NVIDIA A100-PCIE-40GB
+                      uuid: GPU-48eb7c73-f2fc-2f3e-6043-e1a4e46e1015
+                    - architecture: Ampere
+                      cudaCores: 6912
+                      memoryTotal: "42949672960"
+                      name: NVIDIA A100-PCIE-40GB
+                      uuid: GPU-20481b32-c583-6007-7790-c573042d740c
+                host: LAMDA1-GPU-A100-93
+                memory:
+                    total: "1080778457088"
+                os: Linux-5.15.0-41-generic-x86_64-with-glibc2.31
+                program: /home/u-longyy/Model_Scratch/LLM/dist_train.py
+                python: CPython 3.10.19
+                root: /home/u-longyy/Model_Scratch/LLM
+                startedAt: "2026-01-09T02:03:28.144942Z"
+                writerId: 8exlbjcso5ty4hudnhxujabpun9relye
+        m: []
+        python_version: 3.10.19
+        t:
+            "1":
+                - 1
+                - 11
+                - 49
+                - 51
+                - 71
+                - 105
+            "2":
+                - 1
+                - 11
+                - 49
+                - 51
+                - 71
+                - 105
+            "3":
+                - 13
+                - 61
+            "4": 3.10.19
+            "5": 0.23.1
+            "6": 4.56.1
+            "12": 0.23.1
+            "13": linux-x86_64

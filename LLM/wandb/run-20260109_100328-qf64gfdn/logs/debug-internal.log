@@ -1,0 +1,9 @@
+{"time":"2026-01-09T10:03:28.429728837+08:00","level":"INFO","msg":"stream: starting","core version":"0.23.1"}
+{"time":"2026-01-09T10:03:29.486788758+08:00","level":"INFO","msg":"stream: created new stream","id":"qf64gfdn"}
+{"time":"2026-01-09T10:03:29.48693645+08:00","level":"INFO","msg":"handler: started","stream_id":"qf64gfdn"}
+{"time":"2026-01-09T10:03:29.487080676+08:00","level":"INFO","msg":"stream: started","id":"qf64gfdn"}
+{"time":"2026-01-09T10:03:29.487119162+08:00","level":"INFO","msg":"sender: started","stream_id":"qf64gfdn"}
+{"time":"2026-01-09T10:03:29.487123041+08:00","level":"INFO","msg":"writer: started","stream_id":"qf64gfdn"}
+{"time":"2026-01-09T10:35:22.06540078+08:00","level":"INFO","msg":"flowcontrol: backed up, offloading to disk","recordNumber":1289}
+{"time":"2026-01-09T10:35:22.074787517+08:00","level":"INFO","msg":"flowcontrol: unblocked","totalOffloaded":13}
+{"time":"2026-01-09T10:35:22.079175371+08:00","level":"INFO","msg":"stream: closing","id":"qf64gfdn"}

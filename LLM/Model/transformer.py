@@ -54,9 +54,9 @@ class transformerblock(nn.Module):
             )
         else:
             raise ValueError(f"Unknown attention type: {attention_type}")
-        self.norm1 = RMSNorm(d_model, rms_eps,dtype,device)
-        self.ffn = SwiGLU(d_model, d_ff,dtype,device)
-        self.norm2 = RMSNorm(d_model, rms_eps,dtype,device)
+        self.norm1 = RMSNorm(d_model, rms_eps, dtype, device)
+        self.ffn = SwiGLU(d_model, d_ff, dtype, device)
+        self.norm2 = RMSNorm(d_model, rms_eps, dtype, device)
         self.dropout = nn.Dropout(dropout)
         self.ffn.init_parameters()
 
@@ -64,14 +64,24 @@ class transformerblock(nn.Module):
         self,
         x,
         past_key_values=None,
+        position_ids=None,
         attn_mask=None,
         use_cache=False,
         use_standard=True,
+        cu_seqlens=None,
+        max_seqlen=None,
     ):
         residual = x
         x = self.norm1(x)
         attn_output, new_cache = self.attn(
-            x, past_key_values, attn_mask, use_cache, use_standard
+            x,
+            past_key_values,
+            position_ids,
+            attn_mask,
+            use_cache,
+            use_standard,
+            cu_seqlens,
+            max_seqlen,
         )
         x = residual + self.dropout(attn_output)
 
@@ -126,24 +136,29 @@ class Transformer(nn.Module):
                 for _ in range(num_layers)
             ]
         )
-        self.norm = RMSNorm(d_model, rms_eps,dtype=dtype,device=device)
+        self.norm = RMSNorm(d_model, rms_eps, dtype=dtype, device=device)
         self.d_model = d_model
-        self.out_proj = nn.Linear(d_model, vocab_size,dtype=dtype,device=device)
+        self.out_proj = nn.Linear(d_model, vocab_size, dtype=dtype, device=device)
 
     def forward(
         self,
         input_ids,
         past_key_values=None,
+        position_ids=None,
         attn_mask=None,
         use_cache=False,
         use_standard=True,
+        cu_seqlens=None,
+        max_seqlen=None,
     ):
         x = self.embedding(input_ids)
         new_past_key_values = []
 
         for i, layer in enumerate(self.layers):
             past = past_key_values[i] if past_key_values is not None else None
-            x, new_cache = layer(x, past, attn_mask, use_cache, use_standard)
+            x, new_cache = layer(
+                x, past, position_ids, attn_mask, use_cache, use_standard,cu_seqlens,max_seqlen
+            )
             if use_cache:
                 new_past_key_values.append(new_cache)
 
@@ -152,4 +167,4 @@ class Transformer(nn.Module):
 
         if use_cache:
             return x, new_past_key_values
-        return x
+        return x,None

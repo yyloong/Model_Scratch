@@ -1,0 +1,368 @@
+[32mINFO[0m: Gradient Accumulation Steps: 1
+[32mINFO[0m: Micro Batch Size: 16
+[32mINFO[0m: Target Train Batch Size (per GPU): 16
+[32mINFO[0m: epoch:0 start
+[32mINFO[0m: train loss:12.0920, step:0
+[32mINFO[0m: train loss:12.0939, step:10
+[32mINFO[0m: train loss:12.0857, step:20
+[32mINFO[0m: train loss:12.0744, step:30
+[32mINFO[0m: train loss:12.0494, step:40
+[32mINFO[0m: train loss:11.9839, step:50
+[32mINFO[0m: train loss:11.9081, step:60
+[32mINFO[0m: train loss:11.8233, step:70
+[32mINFO[0m: train loss:11.6868, step:80
+[32mINFO[0m: train loss:11.4524, step:90
+[32mINFO[0m: train loss:11.1658, step:100
+[32mINFO[0m: train loss:10.8052, step:110
+[32mINFO[0m: train loss:10.3893, step:120
+[32mINFO[0m: train loss:9.8525, step:130
+[32mINFO[0m: train loss:9.2465, step:140
+[32mINFO[0m: train loss:8.6713, step:150
+[32mINFO[0m: train loss:8.2629, step:160
+[32mINFO[0m: train loss:8.0459, step:170
+[32mINFO[0m: train loss:7.9173, step:180
+[32mINFO[0m: train loss:7.7865, step:190
+[32mINFO[0m: train loss:7.8657, step:200
+[32mINFO[0m: train loss:7.7772, step:210
+[32mINFO[0m: train loss:7.7937, step:220
+[32mINFO[0m: train loss:7.7415, step:230
+[32mINFO[0m: train loss:7.7754, step:240
+[32mINFO[0m: train loss:7.6816, step:250
+[32mINFO[0m: train loss:7.7233, step:260
+[32mINFO[0m: train loss:7.6691, step:270
+[32mINFO[0m: train loss:7.6339, step:280
+[32mINFO[0m: train loss:7.6111, step:290
+[32mINFO[0m: train loss:7.6157, step:300
+[32mINFO[0m: train loss:7.5212, step:310
+[32mINFO[0m: train loss:7.5618, step:320
+[32mINFO[0m: train loss:7.5025, step:330
+[32mINFO[0m: train loss:7.4043, step:340
+[32mINFO[0m: train loss:7.3926, step:350
+[32mINFO[0m: train loss:7.2904, step:360
+[32mINFO[0m: train loss:7.2427, step:370
+[32mINFO[0m: train loss:7.2582, step:380
+[32mINFO[0m: train loss:7.1123, step:390
+[32mINFO[0m: train loss:7.0168, step:400
+[32mINFO[0m: train loss:7.0138, step:410
+[32mINFO[0m: train loss:6.9102, step:420
+[32mINFO[0m: train loss:6.8610, step:430
+[32mINFO[0m: train loss:6.8428, step:440
+[32mINFO[0m: train loss:6.8461, step:450
+[32mINFO[0m: train loss:6.7207, step:460
+[32mINFO[0m: train loss:6.7302, step:470
+[32mINFO[0m: train loss:6.7167, step:480
+[32mINFO[0m: train loss:6.7817, step:490
+[32mINFO[0m: step:500, val_loss: 6.6349
+[32mINFO[0m: train loss:6.6125, step:500
+[32mINFO[0m: train loss:6.5568, step:510
+[32mINFO[0m: train loss:6.6424, step:520
+[32mINFO[0m: train loss:6.5253, step:530
+[32mINFO[0m: train loss:6.4472, step:540
+[32mINFO[0m: train loss:6.4656, step:550
+[32mINFO[0m: train loss:6.4884, step:560
+[32mINFO[0m: train loss:6.4710, step:570
+[32mINFO[0m: train loss:6.3626, step:580
+[32mINFO[0m: train loss:6.3858, step:590
+[32mINFO[0m: train loss:6.2624, step:600
+[32mINFO[0m: train loss:6.3930, step:610
+[32mINFO[0m: train loss:6.2606, step:620
+[32mINFO[0m: train loss:6.2763, step:630
+[32mINFO[0m: train loss:6.2790, step:640
+[32mINFO[0m: train loss:6.2727, step:650
+[32mINFO[0m: train loss:6.1997, step:660
+[32mINFO[0m: train loss:6.1923, step:670
+[32mINFO[0m: train loss:6.1581, step:680
+[32mINFO[0m: train loss:6.1770, step:690
+[32mINFO[0m: train loss:6.1147, step:700
+[32mINFO[0m: train loss:6.1697, step:710
+[32mINFO[0m: train loss:6.0347, step:720
+[32mINFO[0m: train loss:6.0724, step:730
+[32mINFO[0m: train loss:6.1015, step:740
+[32mINFO[0m: train loss:5.9168, step:750
+[32mINFO[0m: train loss:6.0341, step:760
+[32mINFO[0m: train loss:5.9436, step:770
+[32mINFO[0m: train loss:5.9879, step:780
+[32mINFO[0m: train loss:5.9981, step:790
+[32mINFO[0m: train loss:5.9705, step:800
+[32mINFO[0m: train loss:5.9406, step:810
+[32mINFO[0m: train loss:5.9852, step:820
+[32mINFO[0m: train loss:5.8962, step:830
+[32mINFO[0m: train loss:5.8536, step:840
+[32mINFO[0m: train loss:5.8998, step:850
+[32mINFO[0m: train loss:5.8307, step:860
+[32mINFO[0m: train loss:5.7775, step:870
+[32mINFO[0m: train loss:5.8518, step:880
+[32mINFO[0m: train loss:5.7890, step:890
+[32mINFO[0m: train loss:5.9091, step:900
+[32mINFO[0m: train loss:5.8625, step:910
+[32mINFO[0m: train loss:5.8138, step:920
+[32mINFO[0m: train loss:5.7628, step:930
+[32mINFO[0m: train loss:5.7192, step:940
+[32mINFO[0m: train loss:5.7139, step:950
+[32mINFO[0m: train loss:5.6940, step:960
+[32mINFO[0m: train loss:5.7132, step:970
+[32mINFO[0m: train loss:5.7769, step:980
+[32mINFO[0m: train loss:5.6557, step:990
+[32mINFO[0m: step:1000, val_loss: 5.7052
+[32mINFO[0m: train loss:5.6753, step:1000
+Saved checkpoint: home/u-longyy/data/mini_model/checkpoints/epoch_0_step_1000_checkpoint.pth
+[32mINFO[0m: train loss:5.7258, step:1010
+[32mINFO[0m: train loss:5.7741, step:1020
+[32mINFO[0m: train loss:5.7210, step:1030
+[32mINFO[0m: train loss:5.6447, step:1040
+[32mINFO[0m: train loss:5.6832, step:1050
+[32mINFO[0m: train loss:5.6141, step:1060
+[32mINFO[0m: train loss:5.6013, step:1070
+[32mINFO[0m: train loss:5.7021, step:1080
+[32mINFO[0m: train loss:5.6323, step:1090
+[32mINFO[0m: train loss:5.6470, step:1100
+[32mINFO[0m: train loss:5.5688, step:1110
+[32mINFO[0m: train loss:5.5899, step:1120
+[32mINFO[0m: train loss:5.6008, step:1130
+[32mINFO[0m: train loss:5.5792, step:1140
+[32mINFO[0m: train loss:5.6271, step:1150
+[32mINFO[0m: train loss:5.5968, step:1160
+[32mINFO[0m: train loss:5.5011, step:1170
+[32mINFO[0m: train loss:5.6032, step:1180
+[32mINFO[0m: train loss:5.4633, step:1190
+[32mINFO[0m: train loss:5.4777, step:1200
+[32mINFO[0m: train loss:5.5131, step:1210
+[32mINFO[0m: train loss:5.4194, step:1220
+[32mINFO[0m: train loss:5.5028, step:1230
+[32mINFO[0m: train loss:5.5366, step:1240
+[32mINFO[0m: train loss:5.4757, step:1250
+[32mINFO[0m: train loss:5.5213, step:1260
+[32mINFO[0m: train loss:5.5000, step:1270
+[32mINFO[0m: train loss:5.4623, step:1280
+[32mINFO[0m: train loss:5.4890, step:1290
+[32mINFO[0m: train loss:5.4686, step:1300
+[32mINFO[0m: train loss:5.4579, step:1310
+[32mINFO[0m: train loss:5.4582, step:1320
+[32mINFO[0m: train loss:5.4757, step:1330
+[32mINFO[0m: train loss:5.4545, step:1340
+[32mINFO[0m: train loss:5.3921, step:1350
+[32mINFO[0m: train loss:5.4289, step:1360
+[32mINFO[0m: train loss:5.3742, step:1370
+[32mINFO[0m: train loss:5.2944, step:1380
+[32mINFO[0m: train loss:5.5205, step:1390
+[32mINFO[0m: train loss:5.4120, step:1400
+[32mINFO[0m: train loss:5.2805, step:1410
+[32mINFO[0m: train loss:5.3758, step:1420
+[32mINFO[0m: train loss:5.3693, step:1430
+[32mINFO[0m: train loss:5.2944, step:1440
+[32mINFO[0m: train loss:5.2612, step:1450
+[32mINFO[0m: train loss:5.4065, step:1460
+[32mINFO[0m: train loss:5.3811, step:1470
+[32mINFO[0m: train loss:5.3681, step:1480
+[32mINFO[0m: train loss:5.3194, step:1490
+[32mINFO[0m: step:1500, val_loss: 5.3234
+[32mINFO[0m: train loss:5.1864, step:1500
+[32mINFO[0m: train loss:5.2633, step:1510
+[32mINFO[0m: train loss:5.4126, step:1520
+[32mINFO[0m: train loss:5.2682, step:1530
+[32mINFO[0m: train loss:5.3463, step:1540
+[32mINFO[0m: train loss:5.2788, step:1550
+[32mINFO[0m: train loss:5.2438, step:1560
+[32mINFO[0m: train loss:5.1470, step:1570
+[32mINFO[0m: train loss:5.3023, step:1580
+[32mINFO[0m: train loss:5.2819, step:1590
+[32mINFO[0m: train loss:5.2374, step:1600
+[32mINFO[0m: train loss:5.2297, step:1610
+[32mINFO[0m: train loss:5.1838, step:1620
+[32mINFO[0m: train loss:5.2492, step:1630
+[32mINFO[0m: train loss:5.2136, step:1640
+[32mINFO[0m: train loss:5.3016, step:1650
+[32mINFO[0m: train loss:5.2210, step:1660
+[32mINFO[0m: train loss:5.2449, step:1670
+[32mINFO[0m: train loss:5.2132, step:1680
+[32mINFO[0m: train loss:5.2762, step:1690
+[32mINFO[0m: train loss:5.1803, step:1700
+[32mINFO[0m: train loss:5.2744, step:1710
+[32mINFO[0m: train loss:5.2178, step:1720
+[32mINFO[0m: train loss:5.2794, step:1730
+[32mINFO[0m: train loss:5.1096, step:1740
+[32mINFO[0m: train loss:5.1369, step:1750
+[32mINFO[0m: train loss:5.2029, step:1760
+[32mINFO[0m: train loss:5.2130, step:1770
+[32mINFO[0m: train loss:5.1211, step:1780
+[32mINFO[0m: train loss:5.1690, step:1790
+[32mINFO[0m: train loss:5.2532, step:1800
+[32mINFO[0m: train loss:5.1261, step:1810
+[32mINFO[0m: train loss:5.2157, step:1820
+[32mINFO[0m: train loss:5.1381, step:1830
+[32mINFO[0m: train loss:5.1186, step:1840
+[32mINFO[0m: train loss:5.0165, step:1850
+[32mINFO[0m: train loss:5.1626, step:1860
+[32mINFO[0m: train loss:5.1589, step:1870
+[32mINFO[0m: train loss:5.0942, step:1880
+[32mINFO[0m: train loss:5.1981, step:1890
+[32mINFO[0m: train loss:5.1439, step:1900
+[32mINFO[0m: train loss:5.1281, step:1910
+[32mINFO[0m: train loss:5.0371, step:1920
+[32mINFO[0m: train loss:5.1685, step:1930
+[32mINFO[0m: train loss:5.0788, step:1940
+[32mINFO[0m: train loss:5.0153, step:1950
+[32mINFO[0m: train loss:5.0973, step:1960
+[32mINFO[0m: train loss:5.1533, step:1970
+[32mINFO[0m: train loss:5.1727, step:1980
+[32mINFO[0m: train loss:5.1993, step:1990
+[32mINFO[0m: step:2000, val_loss: 5.0878
+[32mINFO[0m: train loss:5.1141, step:2000
+Saved checkpoint: home/u-longyy/data/mini_model/checkpoints/epoch_0_step_2000_checkpoint.pth
+[32mINFO[0m: train loss:5.1859, step:2010
+[32mINFO[0m: train loss:5.0833, step:2020
+[32mINFO[0m: train loss:5.0498, step:2030
+[32mINFO[0m: train loss:5.0266, step:2040
+[32mINFO[0m: train loss:5.0252, step:2050
+[32mINFO[0m: train loss:5.1035, step:2060
+[32mINFO[0m: train loss:5.0749, step:2070
+[32mINFO[0m: train loss:5.0719, step:2080
+[32mINFO[0m: train loss:5.0087, step:2090
+[32mINFO[0m: train loss:4.9455, step:2100
+[32mINFO[0m: train loss:4.9558, step:2110
+[32mINFO[0m: train loss:4.9874, step:2120
+[32mINFO[0m: train loss:5.0263, step:2130
+[32mINFO[0m: train loss:5.0707, step:2140
+[32mINFO[0m: train loss:5.0329, step:2150
+[32mINFO[0m: train loss:5.0820, step:2160
+[32mINFO[0m: train loss:5.0696, step:2170
+[32mINFO[0m: train loss:4.9654, step:2180
+[32mINFO[0m: train loss:5.1670, step:2190
+[32mINFO[0m: train loss:4.9877, step:2200
+[32mINFO[0m: train loss:5.0567, step:2210
+[32mINFO[0m: train loss:4.9537, step:2220
+[32mINFO[0m: train loss:5.0792, step:2230
+[32mINFO[0m: train loss:4.9785, step:2240
+[32mINFO[0m: train loss:4.9743, step:2250
+[32mINFO[0m: train loss:4.9963, step:2260
+[32mINFO[0m: train loss:4.9492, step:2270
+[32mINFO[0m: train loss:4.9903, step:2280
+[32mINFO[0m: train loss:4.9736, step:2290
+[32mINFO[0m: train loss:4.9375, step:2300
+[32mINFO[0m: train loss:4.9643, step:2310
+[32mINFO[0m: train loss:5.0059, step:2320
+[32mINFO[0m: train loss:4.9869, step:2330
+[32mINFO[0m: train loss:4.9211, step:2340
+[32mINFO[0m: train loss:5.0645, step:2350
+[32mINFO[0m: train loss:4.9451, step:2360
+[32mINFO[0m: train loss:4.9035, step:2370
+[32mINFO[0m: train loss:4.9442, step:2380
+[32mINFO[0m: train loss:4.9374, step:2390
+[32mINFO[0m: train loss:4.9072, step:2400
+[32mINFO[0m: train loss:4.9263, step:2410
+Traceback (most recent call last):
+  File "/home/u-longyy/Model_Scratch/LLM/dist_train.py", line 422, in <module>
+    train(
+  File "/home/u-longyy/Model_Scratch/LLM/dist_train.py", line 278, in train
+    _, _, loss = model(
+  File "/home/u-longyy/miniconda3/envs/verl/lib/python3.10/site-packages/torch/_dynamo/eval_frame.py", line 375, in __call__
+    return super().__call__(*args, **kwargs)
+  File "/home/u-longyy/miniconda3/envs/verl/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/u-longyy/miniconda3/envs/verl/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/u-longyy/miniconda3/envs/verl/lib/python3.10/site-packages/torch/_dynamo/eval_frame.py", line 736, in compile_wrapper
+    return fn(*args, **kwargs)
+  File "/home/u-longyy/miniconda3/envs/verl/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/u-longyy/miniconda3/envs/verl/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/u-longyy/Model_Scratch/LLM/Model/mini_llm.py", line 79, in forward
+    outputs, _ = self.transformer(
+  File "/home/u-longyy/miniconda3/envs/verl/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/u-longyy/miniconda3/envs/verl/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/u-longyy/Model_Scratch/LLM/Model/transformer.py", line 159, in forward
+    x, new_cache = layer(
+  File "/home/u-longyy/miniconda3/envs/verl/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/u-longyy/miniconda3/envs/verl/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/u-longyy/Model_Scratch/LLM/Model/transformer.py", line 63, in forward
+    def forward(
+  File "/home/u-longyy/miniconda3/envs/verl/lib/python3.10/site-packages/torch/_dynamo/eval_frame.py", line 929, in _fn
+    return fn(*args, **kwargs)
+  File "/home/u-longyy/miniconda3/envs/verl/lib/python3.10/site-packages/torch/_functorch/aot_autograd.py", line 1241, in forward
+    return compiled_fn(full_args)
+  File "/home/u-longyy/miniconda3/envs/verl/lib/python3.10/site-packages/torch/_functorch/_aot_autograd/runtime_wrappers.py", line 370, in runtime_wrapper
+    all_outs = call_func_at_runtime_with_args(
+  File "/home/u-longyy/miniconda3/envs/verl/lib/python3.10/site-packages/torch/_functorch/_aot_autograd/utils.py", line 126, in call_func_at_runtime_with_args
+    out = normalize_as_list(f(args))
+  File "/home/u-longyy/miniconda3/envs/verl/lib/python3.10/site-packages/torch/_functorch/_aot_autograd/utils.py", line 100, in g
+    return f(*args)
+  File "/home/u-longyy/miniconda3/envs/verl/lib/python3.10/site-packages/torch/autograd/function.py", line 576, in apply
+    return super().apply(*args, **kwargs)  # type: ignore[misc]
+  File "/home/u-longyy/miniconda3/envs/verl/lib/python3.10/site-packages/torch/_functorch/_aot_autograd/runtime_wrappers.py", line 2074, in forward
+    fw_outs = call_func_at_runtime_with_args(
+  File "/home/u-longyy/miniconda3/envs/verl/lib/python3.10/site-packages/torch/_functorch/_aot_autograd/utils.py", line 126, in call_func_at_runtime_with_args
+    out = normalize_as_list(f(args))
+  File "/home/u-longyy/miniconda3/envs/verl/lib/python3.10/site-packages/torch/_functorch/_aot_autograd/runtime_wrappers.py", line 556, in wrapper
+    return compiled_fn(runtime_args)
+  File "/home/u-longyy/miniconda3/envs/verl/lib/python3.10/site-packages/torch/_functorch/_aot_autograd/runtime_wrappers.py", line 750, in inner_fn
+    outs = compiled_fn(args)
+  File "/home/u-longyy/miniconda3/envs/verl/lib/python3.10/site-packages/torch/_inductor/output_code.py", line 584, in __call__
+    return self.current_callable(inputs)
+  File "/home/u-longyy/miniconda3/envs/verl/lib/python3.10/site-packages/torch/_inductor/utils.py", line 2716, in run
+    out = model(new_inputs)
+  File "/tmp/torchinductor_u-longyy/gr/cgrc3jnrmyainmr7dkkz3nfwpflfhiu6kj5jkor5gd64etbjdh6o.py", line 472, in call
+    extern_kernels.mm(reinterpret_tensor(buf11, (16384, 2048), (2048, 1), 0), reinterpret_tensor(primals_14, (2048, 1024), (1, 2048), 0), out=buf15)
+KeyboardInterrupt
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/home/u-longyy/Model_Scratch/LLM/dist_train.py", line 422, in <module>
+[rank0]:     train(
+[rank0]:   File "/home/u-longyy/Model_Scratch/LLM/dist_train.py", line 278, in train
+[rank0]:     _, _, loss = model(
+[rank0]:   File "/home/u-longyy/miniconda3/envs/verl/lib/python3.10/site-packages/torch/_dynamo/eval_frame.py", line 375, in __call__
+[rank0]:     return super().__call__(*args, **kwargs)
+[rank0]:   File "/home/u-longyy/miniconda3/envs/verl/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:   File "/home/u-longyy/miniconda3/envs/verl/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:   File "/home/u-longyy/miniconda3/envs/verl/lib/python3.10/site-packages/torch/_dynamo/eval_frame.py", line 736, in compile_wrapper
+[rank0]:     return fn(*args, **kwargs)
+[rank0]:   File "/home/u-longyy/miniconda3/envs/verl/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:   File "/home/u-longyy/miniconda3/envs/verl/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:   File "/home/u-longyy/Model_Scratch/LLM/Model/mini_llm.py", line 79, in forward
+[rank0]:     outputs, _ = self.transformer(
+[rank0]:   File "/home/u-longyy/miniconda3/envs/verl/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:   File "/home/u-longyy/miniconda3/envs/verl/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:   File "/home/u-longyy/Model_Scratch/LLM/Model/transformer.py", line 159, in forward
+[rank0]:     x, new_cache = layer(
+[rank0]:   File "/home/u-longyy/miniconda3/envs/verl/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:   File "/home/u-longyy/miniconda3/envs/verl/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:   File "/home/u-longyy/Model_Scratch/LLM/Model/transformer.py", line 63, in forward
+[rank0]:     def forward(
+[rank0]:   File "/home/u-longyy/miniconda3/envs/verl/lib/python3.10/site-packages/torch/_dynamo/eval_frame.py", line 929, in _fn
+[rank0]:     return fn(*args, **kwargs)
+[rank0]:   File "/home/u-longyy/miniconda3/envs/verl/lib/python3.10/site-packages/torch/_functorch/aot_autograd.py", line 1241, in forward
+[rank0]:     return compiled_fn(full_args)
+[rank0]:   File "/home/u-longyy/miniconda3/envs/verl/lib/python3.10/site-packages/torch/_functorch/_aot_autograd/runtime_wrappers.py", line 370, in runtime_wrapper
+[rank0]:     all_outs = call_func_at_runtime_with_args(
+[rank0]:   File "/home/u-longyy/miniconda3/envs/verl/lib/python3.10/site-packages/torch/_functorch/_aot_autograd/utils.py", line 126, in call_func_at_runtime_with_args
+[rank0]:     out = normalize_as_list(f(args))
+[rank0]:   File "/home/u-longyy/miniconda3/envs/verl/lib/python3.10/site-packages/torch/_functorch/_aot_autograd/utils.py", line 100, in g
+[rank0]:     return f(*args)
+[rank0]:   File "/home/u-longyy/miniconda3/envs/verl/lib/python3.10/site-packages/torch/autograd/function.py", line 576, in apply
+[rank0]:     return super().apply(*args, **kwargs)  # type: ignore[misc]
+[rank0]:   File "/home/u-longyy/miniconda3/envs/verl/lib/python3.10/site-packages/torch/_functorch/_aot_autograd/runtime_wrappers.py", line 2074, in forward
+[rank0]:     fw_outs = call_func_at_runtime_with_args(
+[rank0]:   File "/home/u-longyy/miniconda3/envs/verl/lib/python3.10/site-packages/torch/_functorch/_aot_autograd/utils.py", line 126, in call_func_at_runtime_with_args
+[rank0]:     out = normalize_as_list(f(args))
+[rank0]:   File "/home/u-longyy/miniconda3/envs/verl/lib/python3.10/site-packages/torch/_functorch/_aot_autograd/runtime_wrappers.py", line 556, in wrapper
+[rank0]:     return compiled_fn(runtime_args)
+[rank0]:   File "/home/u-longyy/miniconda3/envs/verl/lib/python3.10/site-packages/torch/_functorch/_aot_autograd/runtime_wrappers.py", line 750, in inner_fn
+[rank0]:     outs = compiled_fn(args)
+[rank0]:   File "/home/u-longyy/miniconda3/envs/verl/lib/python3.10/site-packages/torch/_inductor/output_code.py", line 584, in __call__
+[rank0]:     return self.current_callable(inputs)
+[rank0]:   File "/home/u-longyy/miniconda3/envs/verl/lib/python3.10/site-packages/torch/_inductor/utils.py", line 2716, in run
+[rank0]:     out = model(new_inputs)
+[rank0]:   File "/tmp/torchinductor_u-longyy/gr/cgrc3jnrmyainmr7dkkz3nfwpflfhiu6kj5jkor5gd64etbjdh6o.py", line 472, in call
+[rank0]:     extern_kernels.mm(reinterpret_tensor(buf11, (16384, 2048), (2048, 1), 0), reinterpret_tensor(primals_14, (2048, 1024), (1, 2048), 0), out=buf15)
+[rank0]: KeyboardInterrupt

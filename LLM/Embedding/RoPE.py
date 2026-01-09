@@ -34,15 +34,17 @@ class RoPE(nn.Module):
             persistent=False,
         )
 
-    def forward(self, x, start_pos=0):
+    def forward(self, x, position_ids=None):
         seq_len = x.size(-2)
-        cos = self.cos[start_pos : start_pos + seq_len, :].unsqueeze(0)
-        sin = self.sin[start_pos : start_pos + seq_len, :].unsqueeze(0)
+        if position_ids is None:
+            position_ids = torch.arange(0,seq_len)
+        cos = self.cos[position_ids].unsqueeze(1)
+        sin = self.sin[position_ids].unsqueeze(1)
         cos = cos.repeat_interleave(2, dim=-1)
         sin = sin.repeat_interleave(2, dim=-1)
 
         x1 = x[..., ::2]
         x2 = x[..., 1::2]
-        x_rotated = torch.stack([x1,-x2], dim=-1).reshape_as(x)
+        x_rotated = torch.stack([-x2,x1], dim=-1).reshape_as(x)
 
         return x * cos + x_rotated * sin
