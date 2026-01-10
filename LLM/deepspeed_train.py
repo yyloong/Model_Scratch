@@ -108,8 +108,8 @@ def train(args, config, ds_config_dict):
     skip_step = 0
     start_step = now_step
     
-    train_dataloader = get_dataloader(config.train_data_path, micro_batchsize, config.im_start_id, world_size=world_size,rank=model_engine.local_rank)
-    val_dataloader = get_dataloader(config.val_data_path, config.val_batchsize, config.im_start_id,world_size = world_size,rank=model_engine.local_rank)
+    train_dataloader = get_dataloader(config.train_data_path, micro_batchsize, config.im_end_id, world_size=world_size,rank=model_engine.local_rank)
+    val_dataloader = get_dataloader(config.val_data_path, config.val_batchsize, config.im_end_id,world_size = world_size,rank=model_engine.local_rank)
 
     model_engine.train()
     
@@ -253,7 +253,7 @@ class Train_config:
     total_epochs: int = 5
 
     # --- 数据 ---
-    im_start_id: int = 151644
+    im_end_id: int = 151645
 
     # --- 步数控制 ---
     val_every_steps: int = 500

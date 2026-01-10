@@ -22,12 +22,14 @@ class MiniLLMConfig:
     latent_dim: int = None
     end_token_id: int = 151645
     rope_theta_base: int = 10000
+    tokenizer: str = "Qwen/Qwen3-0.6B"
     dtype: torch.dtype = torch.bfloat16
 
 
 class MiniLLM(torch.nn.Module):
     def __init__(self, config: MiniLLMConfig, use_tokenizer = True):
         super(MiniLLM, self).__init__()
+        self.config = config
         self.transformer = Transformer(
             vocab_size=config.vocab_size,
             d_model=config.d_model,
@@ -50,7 +52,7 @@ class MiniLLM(torch.nn.Module):
         self.loss_fct = torch.nn.CrossEntropyLoss()
         self.tokenizer = None
         if use_tokenizer == True:
-            self.tokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen3-0.6B")
+            self.tokenizer = AutoTokenizer.from_pretrained(self.config.tokenizer)
 
     def forward(
         self,
