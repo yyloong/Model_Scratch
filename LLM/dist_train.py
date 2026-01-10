@@ -96,10 +96,10 @@ def load_checkpoint(path):
     checkpoint = torch.load(path, map_location='cpu')
     epoch = checkpoint['epoch']
     step = checkpoint['step']
-    model = checkpoint['model']
+    model_dict = checkpoint['model']
     optimizer = checkpoint['optimizer']
     scheduler = checkpoint['scheduler']
-    return epoch, step, model, optimizer, scheduler
+    return epoch, step, model_dict, optimizer, scheduler
 
 
 def init_loger(log_file):
@@ -305,8 +305,8 @@ def train(config, local_rank, device, model, optimizer, scheduler):
 
                 if is_master:
                     if now_step % config.train_log_every_step == 0:
-                        logger.info(f"train loss:{train_loss_val:.4f}, step:{now_step}")
-                        wandb.log({"train_loss": train_loss_val, "step": now_step})
+                        logger.info(f"train loss:{train_loss_val:.4f}",step=now_step)
+                        wandb.log({"train_loss": train_loss_val},step=now_step)
                     
                     if now_step > 0 and now_step % config.save_every_step == 0:
                         save_checkpoint(model, epoch, now_step, optimizer, scheduler, config.save_path, config.max_checkpoint)
@@ -364,7 +364,7 @@ class Train_config:
     project_name: str = "MiniLLM-Train"
     run_name: str = "run-001"
     log_file: str = "train.log"
-    resume_train: bool = True
+    resume_train: bool = False
     resume_path: str = None
 
     # --- 关键开关 ---

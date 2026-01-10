@@ -4,7 +4,7 @@ import torch
 class RMSNorm(nn.Module):
     def __init__(self, d_model, eps=1e-8,dtype=torch.bfloat16,device=torch.device("cuda")):
         super().__init__()
-        self.eps = torch.tensor(eps,dtype=dtype,device=device)
+        self.eps = eps
         self.scale = nn.Parameter(torch.ones(d_model,dtype=dtype,device=device))
 
     def forward(self, x):

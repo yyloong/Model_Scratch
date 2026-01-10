@@ -2,6 +2,7 @@ import torch.nn as torch
 import torch
 from dataclasses import dataclass
 from Model.transformer import Transformer
+from transformers import AutoTokenizer
 
 
 @dataclass
@@ -25,7 +26,7 @@ class MiniLLMConfig:
 
 
 class MiniLLM(torch.nn.Module):
-    def __init__(self, config: MiniLLMConfig):
+    def __init__(self, config: MiniLLMConfig, use_tokenizer = True):
         super(MiniLLM, self).__init__()
         self.transformer = Transformer(
             vocab_size=config.vocab_size,
@@ -47,6 +48,9 @@ class MiniLLM(torch.nn.Module):
         )
         self.end_token_id = config.end_token_id
         self.loss_fct = torch.nn.CrossEntropyLoss()
+        self.tokenizer = None
+        if use_tokenizer == True:
+            self.tokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen3-0.6B")
 
     def forward(
         self,
@@ -96,14 +100,16 @@ class MiniLLM(torch.nn.Module):
 
         return outputs, _, loss
 
-    def generate(self, input_ids, max_length, temperature=1.0, position_ids=None):
+    @torch.no_grad()
+    def generate(self, input_ids, max_length, temperature=1, position_ids=None,topk=5):
         self.transformer.eval()
         generated = input_ids
+        current_input_ids = input_ids
         past_key_values = None
 
         for _ in range(max_length):
             outputs, past_key_values = self.transformer(
-                generated,
+                current_input_ids,
                 past_key_values=past_key_values,
                 position_ids=position_ids,
                 use_cache=True,
@@ -112,9 +118,13 @@ class MiniLLM(torch.nn.Module):
             next_token_logits = next_token_logits / temperature
             max_logits = torch.max(next_token_logits, dim=-1, keepdim=True).values
             probs = torch.softmax(next_token_logits - max_logits, dim=-1)
-            topk_probs, topk_indices = torch.topk(probs, k=5, dim=-1)
+            topk_probs, topk_indices = torch.topk(probs, topk, dim=-1)
             next_token = torch.multinomial(topk_probs, num_samples=1)
             next_token = torch.gather(topk_indices, -1, next_token)
+            if self.tokenizer:
+                print(self.tokenizer.decode(next_token[0]),end='',flush=True)
+            current_input_ids = next_token
+            position_ids = torch.tensor([[len(generated)]],device=input_ids.device)
             generated = torch.cat((generated, next_token), dim=1)
             if next_token.item() == self.end_token_id:
                 break

@@ -15,8 +15,9 @@ class RoPE(nn.Module):
         self.embed_dim = embed_dim
         self.max_position_embeddings = max_position_embeddings
         inv_freq = 1.0 / (
-            rope_theta_base ** (torch.arange(0, embed_dim, 2,dtype=dtype,device=device) / embed_dim)
+            rope_theta_base ** (torch.arange(0, embed_dim, 2,dtype=torch.float32,device=device) / embed_dim)
         )
+        inv_freq.to(dtype=dtype)
 
         self.register_buffer(
             "cos",
@@ -37,7 +38,7 @@ class RoPE(nn.Module):
     def forward(self, x, position_ids=None):
         seq_len = x.size(-2)
         if position_ids is None:
-            position_ids = torch.arange(0,seq_len)
+            position_ids = torch.arange(0,seq_len).unsqueeze(0)
         cos = self.cos[position_ids].unsqueeze(1)
         sin = self.sin[position_ids].unsqueeze(1)
         cos = cos.repeat_interleave(2, dim=-1)

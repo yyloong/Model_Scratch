@@ -1,11 +1,20 @@
 import torch
 import numpy as np
 from torch.utils.data import DataLoader, Dataset
+from torch.utils.data.distributed import DistributedSampler
 from datasets import load_from_disk
 
 class PretrainDataset(Dataset):
-    def __init__(self, dataset_path):
-        self.dataset =  load_from_disk(dataset_path)
+    def __init__(self, dataset_path, rank=0, world_size=1):
+        # 1. 加载数据集
+        full_dataset = load_from_disk(dataset_path)
+        
+        # 2. 关键修改：分布式切片
+        # num_shards 等于总 GPU 数，index 为当前 GPU 的编号
+        if world_size > 1:
+            self.dataset = full_dataset.shard(num_shards=world_size, index=rank, contiguous=True)
+        else:
+            self.dataset = full_dataset
 
     def __len__(self):
         return len(self.dataset)
@@ -22,10 +31,8 @@ class VarlenCollator:
         self.ignore_index = ignore_index
 
     def __call__(self, batch):
-        """
-        将 batch 内的样本摊平，并生成 cu_seqlens, position_ids 和 shift 后的 labels
-        """
         # 1. 提取并堆叠 input_ids
+        # 这里假设你的每条数据 input_ids 长度都是固定的 1024
         input_ids_list = [item["input_ids"] for item in batch]
         input_ids_batch = torch.stack(input_ids_list) 
         
@@ -35,12 +42,15 @@ class VarlenCollator:
         # 2. 摊平 Input IDs
         flatten_input_ids = input_ids_batch.view(-1)
         
-        # 3. 计算 cu_seqlens
+        # 3. 计算 cu_seqlens (用于 Flash Attention / Varlen Attn)
+        # 基础边界：[0, 1024, 2048, ...]
         seq_boundaries = torch.arange(0, total_tokens + 1, seq_len, dtype=torch.int32, device=flatten_input_ids.device)
         
+        # 寻找文档起始符 <|im_start|> 的位置
         doc_start_indices = (flatten_input_ids == self.im_start_id).nonzero(as_tuple=True)[0]
         doc_start_indices = doc_start_indices.to(dtype=torch.int32)
         
+        # 合并边界并排序去重
         cu_seqlens = torch.cat([seq_boundaries, doc_start_indices])
         cu_seqlens = torch.unique(cu_seqlens, sorted=True)
         
@@ -50,100 +60,40 @@ class VarlenCollator:
         segment_starts = cu_seqlens[segment_ids]
         position_ids = token_indices - segment_starts
 
-        # 5. 生成 Labels (核心修改逻辑)
-        # -------------------------------------------------------------------------
-        # 逻辑：Label[i] 应该是 Input[i+1]。
-        # 这是一个 "左移" 操作（数据左移，让 i 对齐 i+1）。
+        # 5. 生成 Labels (Shifted)
         labels = flatten_input_ids.clone()
-        
-        # 5.1 整体移位：将 input_ids 向后读一位作为 label
-        # labels[:-1] = input_ids[1:]
-        # 注意：这会导致 labels 最后一个元素是脏数据，稍后会被 mask 掉
         labels[:-1] = flatten_input_ids[1:]
         
-        # 5.2 Mask 掉每个片段的最后一个 Token
-        # 既然我们用 cu_seqlens 切断了注意力，那么片段 A 的最后一个 token 
-        # 就不应该预测片段 B 的第一个 token。
-        # cu_seqlens 里的值不仅是片段的 Start，也是上一个片段的 End (exclusive)。
-        # 所以 cu_seqlens[1:] - 1 也就是所有“切断点”的前一个位置（即段末）。
-        
-        # 获取每个 segment 结束位置的索引
-        # cu_seqlens: [start_0, start_1, ..., total_tokens]
-        # end_indices: [start_1 - 1, start_2 - 1, ..., total_tokens - 1]
+        # 将每个 segment 的末尾 token 的 label 设为 ignore_index
         seq_end_indices = cu_seqlens[1:] - 1
-        
-        # 将所有段末的 label 设为 ignore_index
-        # 这同时也自然处理了 total_tokens - 1 (整个 batch 的最后一个 token)
         labels[seq_end_indices.long()] = self.ignore_index
-        # -------------------------------------------------------------------------
 
         # 6. 计算 Max SeqLen
         max_seqlen = (cu_seqlens[1:] - cu_seqlens[:-1]).max().item()
 
         return {
             "input_ids": flatten_input_ids,
-            "labels": labels,                         # 已处理好的 labels
+            "labels": labels,
             "position_ids": position_ids.long(),
             "cu_seqlens": cu_seqlens.int(),
             "max_seqlen": max_seqlen
         }
 
-def get_dataloader(dataset_path, batch_size, im_start_token_id, shuffle=True):
-    # 这里为了演示 Mock 数据，实际使用请换回 PretrainDataset(dataset_path)
-    dataset = PretrainDataset(dataset_path) 
+# 修改：增加 rank 和 world_size 参数
+def get_dataloader(dataset_path, batch_size, im_start_token_id, rank=0, world_size=1):
+    dataset = PretrainDataset(dataset_path) # 移除内部的 shard 逻辑
     
-    collator = VarlenCollator(im_start_token_id)
+    sampler = None
+    if world_size > 1:
+        # 使用 DistributedSampler 确保每个 Epoch 数据分配不同
+        sampler = DistributedSampler(dataset, num_replicas=world_size, rank=rank, shuffle=True)
     
     dataloader = DataLoader(
         dataset,
         batch_size=batch_size,
-        shuffle=shuffle,
-        # num_workers=0, # 调试时建议设为 0
-        collate_fn=collator
+        shuffle=(sampler is None), 
+        sampler=sampler,
+        collate_fn=VarlenCollator(im_start_token_id),
+        drop_last=True
     )
     return dataloader
-
-# --- 验证逻辑 ---
-if __name__ == "__main__":
-    IMSTART_ID = 9999
-    print(f"{'='*20} Checking Labels Logic {'='*20}")
-    
-    # 这里的 dataset_path 没用到，因为用了 MockDataset
-    loader = get_dataloader("dummy_path", batch_size=2, im_start_token_id=IMSTART_ID, shuffle=False)
-
-    for batch in loader:
-        input_ids = batch['input_ids']
-        labels = batch['labels']
-        cu_seqlens = batch['cu_seqlens']
-        
-        print(f"Batch Flatten Shape: {input_ids.shape}")
-        print(f"cu_seqlens: {cu_seqlens.tolist()}")
-        
-        print("\n--- Token vs Label Check ---")
-        print(f"{'Idx':<4} | {'Input':<6} | {'Label':<6} | {'Note'}")
-        
-        inputs_list = input_ids.tolist()
-        labels_list = labels.tolist()
-        
-        # 找出切割点以便高亮显示
-        cut_points = set((cu_seqlens[1:] - 1).tolist())
-        
-        for i in range(len(inputs_list)):
-            inp = inputs_list[i]
-            lbl = labels_list[i]
-            
-            note = ""
-            if i in cut_points:
-                note = "<--- Segment End (Label should be -100)"
-            elif inp == IMSTART_ID:
-                note = "<--- Doc Start"
-                
-            # 验证逻辑：正常情况下 Label 应该是 Input 的下一个
-            # 也就是 labels[i] == inputs[i+1]
-            if i not in cut_points and i + 1 < len(inputs_list):
-                 if lbl != inputs_list[i+1]:
-                     note += " [ERROR: Shift incorrect]"
-            
-            print(f"{i:<4} | {inp:<6} | {lbl:<6} | {note}")
-        
-        break

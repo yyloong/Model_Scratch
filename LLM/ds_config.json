@@ -1,6 +1,6 @@
 {
-  "train_batch_size": 64,
-  "train_micro_batch_size_per_gpu": 16,
+  "train_batch_size": 56,
+  "train_micro_batch_size_per_gpu": 14,
   "gradient_accumulation_steps": 1,
 
   "optimizer": {
@@ -9,18 +9,15 @@
       "lr": 1e-4,
       "betas": [0.9, 0.95],
       "eps": 1e-8,
-      "weight_decay": 0.1,
-      "fused": true
+      "weight_decay": 0.1
     }
   },
 
   "scheduler": {
     "type": "WarmupCosineLR",
     "params": {
-      "warmup_min_lr": 0,
-      "warmup_max_lr": 1e-4,
       "warmup_num_steps": 250,
-      "total_num_steps": 25000
+      "total_num_steps": 50000
     }
   },
 
@@ -29,7 +26,7 @@
   },
 
   "zero_optimization": {
-    "stage": 0,
+    "stage": 1,
     "contiguous_gradients": true,
     "overlap_comm": true
   },

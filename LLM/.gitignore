@@ -1,4 +1,7 @@
 *.nsys-rep
 wandb/
 __pycache__/
+*.pyc
+*.pyo
+*.pyd
 train.log
